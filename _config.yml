@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: Erkam's blog
+name: Pham's blog
 
 # Name of the author
-author: Erkam Uyanik
+author: Khanh Son Pham
 
 # Short bio or description (displayed in the header)
 # description: An elegant Jekyll theme
@@ -24,12 +24,12 @@ footer-links:
   email:
   facebook:
   flickr:
-  github: eu42
-  instagram: _eu42
-  linkedin: uyanik
+  github: KSonPham
+  instagram: 
+  linkedin: 
   pinterest:
   rss:
-  twitter: _eu42
+  twitter: 
   stackoverflow:
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
@@ -38,7 +38,7 @@ footer-links:
 
 # Enter your Disqus shortname (not your username) to enable commenting on posts
 # You can find your shortname on the Settings page of your Disqus account
-disqus: eu42-github-io
+disqus: KSonPham-github-io
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: UA-157826634-1
@@ -46,8 +46,8 @@ google_site_verification: iGAzqIllIAREgMTHCjkIQvHnZDb5Z7p4-DLn8Baj6S0
 
 # Your website URL (e.g. http://amitmerchant1990.github.io or http://www.amitmerchant.com)
 # Used for Sitemap.xml and your RSS feed
-url: http://eu42.github.io
-enforce_ssl: https://eu42.github.io
+url: http://KSonPham.github.io
+enforce_ssl: https://KSonPham.github.io
 
 # If you're hosting your site at a Project repository on GitHub pages
 # (http://yourusername.github.io/repository-name)
