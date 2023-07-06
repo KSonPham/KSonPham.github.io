@@ -91,7 +91,7 @@ This is the overview of the VoxFormer paper. As shown in the above figure, it co
   <p style="text-align:center;font-style:italic;">Stage 1: Class-Agnostic Query Proposal.</p>
 </div>
 
-Using two RGB images from a stereo camera setup, our approach begins by predicting a depth map with **MobileStereoNet**. This depth map is then projected back to 3D space using camera intrinsic parameters, resulting in a point cloud. Voxelization of the point cloud yields a sparse occupancy voxel grid of size $H\times W\times Z$, denoting occupied and empty voxels. This **2.5D representation** serves as input for adapted LMSCNet, a fast and high-performing LiDAR-based method for occupancy prediction. The predicted occupancy grid, with lower resolution $h\times w\times z$, enhances robustness against noisy depth estimation. This process embodies the paper's first key concept of "**reconstruction before hallucination**".
+Using two RGB images from a stereo camera setup, our approach begins by predicting a depth map with **MobileStereoNet**. This depth map is then projected back to 3D space using camera intrinsic parameters, resulting in a point cloud. Voxelization of the point cloud yields a sparse occupancy voxel grid of size $H\times W\times Z$, denoting occupied and empty voxels. This **2.5D representation** serves as input for adapted LMSCNet, a fast and high-performing LiDAR-based method for occupancy prediction. The predicted occupancy grid, with lower resolution $$h\times w\times z$$, enhances robustness against noisy depth estimation. This process embodies the paper's first key concept of "**reconstruction before hallucination**".
 
 ## Stage 2: Class-Specific Segmentation
 <div align="center">
@@ -122,7 +122,7 @@ Next, the updated queries are combined with mask tokens $$\mathbf{m}$$, which ac
 
 # Result and Ablation Study
 ## Dataset and Evaluation Metrics
-The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$m$ ahead, 6.4$m$ in height and 25.6$m$ left and right side. Voxel grid has size 0.2$m$ x 0.2$m$ x 0.2$m$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
+The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$$m$$ ahead, 6.4$$m$$ in height and 25.6$m$ left and right side. Voxel grid has size 0.2$$m$$ x 0.2$$m$$ x 0.2$$m$$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
 
 ## Quantitative Result
 Examining the results presented below, it is evident that the VoxFormer paper surpasses the current leading camera-based method, MonoScene, by a considerable margin. Notably, as the distance to the egovehicle decreases, the performance gap between VoxFormer and state-of-the-art LiDAR-based SSC methods reduces significantly, to the extent that VoxFormer even outperforms certain methods in this group.
