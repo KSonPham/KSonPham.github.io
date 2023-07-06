@@ -99,7 +99,7 @@ Using two RGB images from a stereo camera setup, our approach begins by predicti
   <p style="text-align:center;font-style:italic;">Stage 2: Class-Specific Segmentation.</p>
 </div>
 
-In stage two, multiple images from different time stamps are used and processed by a **ResNet-50** backbone to obtain the feature map **$$\\bm{F^{2D}_t}$$**, which serves as keys and values for the attention module. Only occupied voxels (blue) from the predicted occupancy grid are used as query input, demonstrating the paper's second key contribution of "**sparsity-in-3D-space**". Now, let's address the topic of Deformable Attention.
+In stage two, multiple images from different time stamps are used and processed by a **ResNet-50** backbone to obtain the feature map <b>$$F^{2D}_t$$</b>, which serves as keys and values for the attention module. Only occupied voxels (blue) from the predicted occupancy grid are used as query input, demonstrating the paper's second key contribution of "**sparsity-in-3D-space**". Now, let's address the topic of Deformable Attention.
 
 ### Deformable Attention
 Each voxel in the occupancy grid corresponds to a point in space, which can be projected back to the image using camera parameters. This forms the basis of deformable attention, where each query only attends to features at its corresponding location on the feature map. This is mathematically expressed as: 
