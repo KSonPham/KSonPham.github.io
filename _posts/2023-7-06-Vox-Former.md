@@ -26,15 +26,15 @@ Computer vision models face a challenge in replicating the complex cognitive pro
   <table style="width: 100%;">
     <tr>
       <td style="width: 30%; border: none; ">
-        <img src="gif/image19.gif" alt="Image 1" height="250" style="width: 100%;">
+        <img src="gif/image19.gif" alt="Image 1" height="200" style="width: 100%;">
         <p style="font-style:italic;">R., Luis; C.e, Raoul de; V., Anne (2020): LMSCNet. Lightweight Multiscale 3D Semantic Completion.</p>
       </td>
       <td style="width: 30%; border: none;">
-        <img src="gif/image17.gif" alt="Image 2" height="250" style="width: 100%;">
+        <img src="gif/image17.gif" alt="Image 2" height="200" style="width: 100%;">
         <p style="font-style:italic;">Li, Jie; H., Kai; W., Peng; L., Yu; Y., Xia (CVPR 2020): Anisotropic Convolutional Networks for 3D Semantic Scene Completion​.</p>
       </td>
       <td style="width: 30%; border: none;">
-        <img src="gif/image18.gif" alt="Image 3" height="250" style="width: 100%;">
+        <img src="gif/image18.gif" alt="Image 3" height="200" style="width: 100%;">
         <p style="font-style:italic;">C., Anh-Quan; C., Raoul de (CVPR 2021): MonoScene. Monocular 3D Semantic Scene Completion​.</p>
       </td>
     </tr>
@@ -44,7 +44,7 @@ Computer vision models face a challenge in replicating the complex cognitive pro
 # Related Works
 In this section, I'm going to present three paper that I think are the most relevant. This will help you to understand the current research landscape and what the VoxFormer does that is different from the previous works. 
 
-## LMSCNet: Lightweight Multiscale 3D Semantic Completion (LiDAR)
+## LMSCNet(LiDAR)
 <div align="center">
   <img img src="img/image20.png" alt="LMSCNet" width="1150">
   <p style="text-align:center;font-style:italic;">R., Luis; C.e, Raoul de; V., Anne (2020): LMSCNet. Lightweight Multiscale 3D Semantic Completion.</p>
@@ -52,7 +52,7 @@ In this section, I'm going to present three paper that I think are the most rele
 
 **LMSCNet** is included here as it is used as the backbone for stage one of our VoxFormer paper, which will be discussed later. This lidar-based method treats depth as a feature rather than a dimension. This allows the use of established Conv2D techniques. Additionally, it employs the U-net architecture with multi-scale prediction. The result is a high-performance completion model with fast training and inference speed.
 
-## MonoScene: Monocular 3D Semantic Scene Completion (RGB)
+## MonoScene (RGB)
 <div align="center">
   <img img src="img/image21.png" alt="MonoScene" width="1150">
   <p style="text-align:center;font-style:italic;">C., Anh-Quan; C., Raoul de (CVPR 2021): MonoScene. Monocular 3D Semantic Scene Completion​.</p>
@@ -91,7 +91,7 @@ This is the overview of the VoxFormer paper. As shown in the above figure, it co
   <p style="text-align:center;font-style:italic;">Stage 1: Class-Agnostic Query Proposal.</p>
 </div>
 
-Using two RGB images from a stereo camera setup, our approach begins by predicting a depth map with **MobileStereoNet**. This depth map is then projected back to 3D space using camera intrinsic parameters, resulting in a point cloud. Voxelization of the point cloud yields a sparse occupancy voxel grid of size $H\times W\times Z$, denoting occupied and empty voxels. This **2.5D representation** serves as input for adapted LMSCNet, a fast and high-performing LiDAR-based method for occupancy prediction. The predicted occupancy grid, with lower resolution $$h\times w\times z$$, enhances robustness against noisy depth estimation. This process embodies the paper's first key concept of "**reconstruction before hallucination**".
+Using two RGB images from a stereo camera setup, our approach begins by predicting a depth map with **MobileStereoNet**. This depth map is then projected back to 3D space using camera intrinsic parameters, resulting in a point cloud. Voxelization of the point cloud yields a sparse occupancy voxel grid of size $$H\times W\times Z$$, denoting occupied and empty voxels. This **2.5D representation** serves as input for adapted LMSCNet, a fast and high-performing LiDAR-based method for occupancy prediction. The predicted occupancy grid, with lower resolution $$h\times w\times z$$, enhances robustness against noisy depth estimation. This process embodies the paper's first key concept of "**reconstruction before hallucination**".
 
 ## Stage 2: Class-Specific Segmentation
 <div align="center">
@@ -102,7 +102,11 @@ Using two RGB images from a stereo camera setup, our approach begins by predicti
 In stage two, multiple images from different time stamps are used and processed by a **ResNet-50** backbone to obtain the feature map $$\mathbf{F^{2D}_t}$$, which serves as keys and values for the attention module. Only occupied voxels (blue) from the predicted occupancy grid are used as query input, demonstrating the paper's second key contribution of "**sparsity-in-3D-space**". Now, let's address the topic of Deformable Attention.
 
 ### Deformable Attention
-Each voxel in the occupancy grid corresponds to a point in space, which can be projected back to the image using camera parameters. This forms the basis of deformable attention, where each query only attends to features at its corresponding location on the feature map. This is mathematically expressed as: $$\Large DA(q,p,F) = \sum^{N_s}_{s=1}A_sW_sF(p+\delta p_s)$$ 
+Each voxel in the occupancy grid corresponds to a point in space, which can be projected back to the image using camera parameters. This forms the basis of deformable attention, where each query only attends to features at its corresponding location on the feature map. This is mathematically expressed as:
+<div align="center">
+  <p style="text-align:center;">$$\large DA(q,p,F) = \sum^{N_s}_{s=1}A_sW_sF(p+\delta p_s)$$ </p>
+</div>
+
 In the above expression, each query $$\mathbf{q}$$ is updated with the feature map $$\mathbf{F}$$ at the location of the corresponding point $$\mathbf{p}$$. Deformable attention extends beyond the corresponding point, also considering the surrounding area (8 surrounding points) using learnable offsets $$\mathbf{\delta p_s}$$. Interpolation is used to calculate values at these locations. The attention weight $$\mathbf{A_s}$$ is normalized between [0,1], while $$\mathbf{W_s}$$ represents the $$\mathbf{V}$$ matrix in the standard attention mechanism. Let's explore how this is applied in the paper.
 <div align="center">
   <img img src="img/illustration of DA.png" alt="Overview" width="950">
@@ -110,7 +114,7 @@ In the above expression, each query $$\mathbf{q}$$ is updated with the feature m
 </div>
 
 ### Deformable Cross-Attention
-As mentioned before, the extracted image features are used as $$\mathbf{K}$$, $$\mathbf{V}$$ while the occupied voxels are used as $$\mathbf{Q}$$. Again, each query $$\mathbf{q_p}$$ from the voxel grid will be updated with the feature map $$\mathbf{F^{2D}_t}$$ at the location $\mathcal{P}(\mathbf{p},t)$. The presence of the time stamp $t$ in this equation is crucial because each point in space is visible in specific images only. For example, in the image above, the black car within the orange box is visible solely in frames $t$ and $t+1$, so it makes sense that those queries from that car should only attend to the images where they appear on. Those images are indexed with $t$ and grouped as $$\mathbf{\mathcal{V}_t}$$. 
+As mentioned before, the extracted image features are used as $$\mathbf{K}$$, $$\mathbf{V}$$ while the occupied voxels are used as $$\mathbf{Q}$$. Again, each query $$\mathbf{q_p}$$ from the voxel grid will be updated with the feature map $$\mathbf{F^{2D}_t}$$ at the location $$\mathcal{P}(\mathbf{p},t)$$. The presence of the time stamp $$t$$ in this equation is crucial because each point in space is visible in specific images only. For example, in the image above, the black car within the orange box is visible solely in frames $$t$$ and $$t+1$$, so it makes sense that those queries from that car should only attend to the images where they appear on. Those images are indexed with $$t$$ and grouped as $$\mathbf{\mathcal{V}_t}$$. 
 
 ### Deformable Self-Attention
 Next, the updated queries are combined with mask tokens $$\mathbf{m}$$, which account for empty or occluded voxels. Each query $$\mathbf{f}$$, representing either a mask token or an updated query proposal, is then updated with the feature map $$\mathbf{F^{3D}}$$ at its location and neighboring points. This aggregates image features from the updated queries to the remaining voxel regions. The resulting 3D feature map is upscaled and passed through a few fully connected layers to generate the final semantic output. The loss function employed is the weighted cross-entropy loss.
@@ -122,7 +126,7 @@ Next, the updated queries are combined with mask tokens $$\mathbf{m}$$, which ac
 
 # Result and Ablation Study
 ## Dataset and Evaluation Metrics
-The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$$m$$ ahead, 6.4$$m$$ in height and 25.6$m$ left and right side. Voxel grid has size 0.2$$m$$ x 0.2$$m$$ x 0.2$$m$$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
+The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$$m$$ ahead, 6.4$$m$$ in height and 25.6$$m$$ left and right side. Voxel grid has size 0.2$$m$$ x 0.2$$m$$ x 0.2$$m$$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
 
 ## Quantitative Result
 Examining the results presented below, it is evident that the VoxFormer paper surpasses the current leading camera-based method, MonoScene, by a considerable margin. Notably, as the distance to the egovehicle decreases, the performance gap between VoxFormer and state-of-the-art LiDAR-based SSC methods reduces significantly, to the extent that VoxFormer even outperforms certain methods in this group.
