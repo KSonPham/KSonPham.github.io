@@ -1,4 +1,10 @@
-# VoxFormer: Sparse Voxel Transformer for Camera-based 3D Semantic Scene Completion
+---
+layout: post
+title: VoxFormer: Sparse Voxel Transformer for Camera-based 3D Semantic Scene Completion
+categories: [computer vision]
+comments: true
+---
+
 In this blog post, we will delve into the research paper titled [VoxFormer: Sparse Voxel Transformer for Camera-based 3D Semantic Scene Completion](https://arxiv.org/abs/2302.12251) authored by Y. Li, Z. Yu, C. Choy, C. Xiao, Jose M. Alvarez, S. Fidler, C. Feng, A. Anandkumar. We will begin with a concise introduction outlining the objective of the study, followed by a discussion on related works to provide a comprehensive overview of the current research landscape concerning semantic scene completion. Subsequently, the results and ablation study will be presented, leading up to the concluding remarks and future prospects.
 
 <div align="center">
