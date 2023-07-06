@@ -91,7 +91,7 @@ This is the overview of the VoxFormer paper. As shown in the above figure, it co
   <p style="text-align:center;font-style:italic;">Stage 1: Class-Agnostic Query Proposal.</p>
 </div>
 
-Using two RGB images from a stereo camera setup, our approach begins by predicting a depth map with **MobileStereoNet**. This depth map is then projected back to 3D space using camera intrinsic parameters, resulting in a point cloud. Voxelization of the point cloud yields a sparse occupancy voxel grid of size $H\times W\times Z$, denoting occupied and empty voxels. This **2.5D representation** serves as input for adapted LMSCNet, a fast and high-performing LiDAR-based method for occupancy prediction. The predicted occupancy grid, with lower resolution $h\times w\times z$, enhances robustness against noisy depth estimation. This process embodies the paper's first key concept of "**reconstruction before hallucination**".
+Using two RGB images from a stereo camera setup, our approach begins by predicting a depth map with **MobileStereoNet**. This depth map is then projected back to 3D space using camera intrinsic parameters, resulting in a point cloud. Voxelization of the point cloud yields a sparse occupancy voxel grid of size $$H\times W\times Z$$, denoting occupied and empty voxels. This **2.5D representation** serves as input for adapted LMSCNet, a fast and high-performing LiDAR-based method for occupancy prediction. The predicted occupancy grid, with lower resolution $$h\times w\times z$$, enhances robustness against noisy depth estimation. This process embodies the paper's first key concept of "**reconstruction before hallucination**".
 
 ## Stage 2: Class-Specific Segmentation
 <div align="center">
