@@ -125,7 +125,7 @@ Next, the updated queries are combined with mask tokens $$\mathbf{\mathit{{m}}}$
 
 # Result and Ablation Study
 ## Dataset and Evaluation Metrics
-The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$m$ ahead, 6.4$m$ in height and 25.6$m$ left and right side. Voxel grid has size 0.2$m$ x 0.2$m$ x 0.2$m$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
+The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$$m$$ ahead, 6.4$$m$$ in height and 25.6$$m$$ left and right side. Voxel grid has size 0.2$$m$$ x 0.2$$m$$ x 0.2$$m$$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
 
 ## Quantitative Result
 Examining the results presented below, it is evident that the VoxFormer paper surpasses the current leading camera-based method, MonoScene, by a considerable margin. Notably, as the distance to the egovehicle decreases, the performance gap between VoxFormer and state-of-the-art LiDAR-based SSC methods reduces significantly, to the extent that VoxFormer even outperforms certain methods in this group.
