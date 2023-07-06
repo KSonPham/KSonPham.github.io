@@ -25,16 +25,16 @@ Computer vision models face a challenge in replicating the complex cognitive pro
 <div style="text-align: center;">
   <table style="width: 100%;">
     <tr>
-      <td style="width: 30%; border: none; ">
-        <img src="/gif/image19.gif" alt="Image 1" height="200" style="width: 100%;">
+      <td style="width: 33%; border: none; ">
+        <img src="/gif/image19.gif" alt="Image 1" height="150" style="width: 100%;">
         <p style="font-style:italic;">R., Luis; C.e, Raoul de; V., Anne (2020): LMSCNet. Lightweight Multiscale 3D Semantic Completion.</p>
       </td>
-      <td style="width: 30%; border: none;">
-        <img src="/gif/image17.gif" alt="Image 2" height="200" style="width: 100%;">
+      <td style="width: 33%; border: none;">
+        <img src="/gif/image17.gif" alt="Image 2" height="150" style="width: 100%;">
         <p style="font-style:italic;">Li, Jie; H., Kai; W., Peng; L., Yu; Y., Xia (CVPR 2020): Anisotropic Convolutional Networks for 3D Semantic Scene Completion​.</p>
       </td>
-      <td style="width: 30%; border: none;">
-        <img src="/gif/image18.gif" alt="Image 3" height="200" style="width: 100%;">
+      <td style="width: 33%; border: none;">
+        <img src="/gif/image18.gif" alt="Image 3" height="150" style="width: 100%;">
         <p style="font-style:italic;">C., Anh-Quan; C., Raoul de (CVPR 2021): MonoScene. Monocular 3D Semantic Scene Completion​.</p>
       </td>
     </tr>
