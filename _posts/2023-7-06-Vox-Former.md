@@ -66,7 +66,7 @@ In this section, I'm going to present three papers that I think are the most rel
   <p style="text-align:center;font-style:italic;">X., Zhaoyang; L., Youquan; L., Xin; Z., Xinge; M., Yuexin; L,, Yikang et al. (CVPR 2023): SCPNet. Semantic Scene Completion on Point Cloud.</p>
 </div>
 
-Lastly, **SCPNet** is the current leading LiDAR approach. It introduces two key enhancements. Firstly, the completion network is redesigned with **Multi-Path Blocks (MPBs)**, which aggregate features at multiple scales. Secondly, a **knowledge distillation objective** is employed, using a multi-frame teacher model and a single-frame student model. This transfers dense, relation-based semantic knowledge from the teacher to the student while preserving fast inference speed. 
+Lastly, **SCPNet** is the current leading LiDAR approach. It introduces two key enhancements. Firstly, the completion network is redesigned with **Multi-Path Blocks (MPBs)**, which aggregates point cloud features at multiple scales. Secondly, a **knowledge distillation objective** is employed, using a multi-frame teacher model and a single-frame student model. This transfers dense, relation-based semantic knowledge from the teacher to the student while preserving fast inference speed. 
 
 
 <div align="center">
