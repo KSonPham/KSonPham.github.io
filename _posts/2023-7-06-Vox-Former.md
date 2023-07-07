@@ -13,14 +13,14 @@ In this blog post, we will delve into the research paper titled [VoxFormer: Spar
 </div>
 
 # Introduction
-We as human have a remarkable ability to mentally reconstruct the complete three-dimensional (3D) geometry of objects and scenes. Our visual system can leverage a wide range of depth cues such as depth, reflection, etc. This combine with the ability to recognize pattern enable us to connect 2D images with 3D priors of objects that we have seen before. 
+We as humans have a remarkable ability to mentally reconstruct the complete three-dimensional (3D) geometry of objects and scenes. Our visual system can leverage a wide range of depth cues such as depth, reflection, etc. This combined with the ability to recognize patterns enables us to connect 2D images with 3D priors of objects that we have seen before. 
 
 <div align="center">
   <img img src="/images/vox/image14.png" alt="Rubic Cube" width="700">
   <p style="text-align:center;font-style:italic;">Various depth cues illustration​.</p>
 </div>
 
-Computer vision models face a challenge in replicating the complex cognitive processes of human vision. Understanding how our brains work and programming it into a machine or deep learning model is a daunting task. One approach is to train deep learning models on every 3D priors, such as shape and texture, to reconstruct the 3D scene. However, this approach is impractical. VoxFormer aims to bring us closer to mimicking this remarkable ability, which is called **semantic scene completion (SCC)**. It involves generating a comprehensive 3D representation of a scene, including occupancy and semantic labels, from a single viewpoint such as RGB, LiDAR or both.
+Computer vision models face a challenge in replicating the complex cognitive processes of human vision. Understanding how our brains work and programming it into a machine or deep learning model is a daunting task. One approach is to train deep learning models on every 3D priors, such as shape and texture, to reconstruct the 3D scene. However, this approach is impractical. VoxFormer aims to bring us closer to mimicking this remarkable ability, which is called **semantic scene completion (SCC)**. It involves generating a comprehensive 3D representation of a scene, including occupancy and semantic labels, from a single viewpoint such as RGB, LiDAR, or both.
 
 <div style="text-align: center;">
   <table style="width: 100%;">
@@ -42,7 +42,7 @@ Computer vision models face a challenge in replicating the complex cognitive pro
 </div>
 
 # Related Works
-In this section, I'm going to present three paper that I think are the most relevant. This will help you to understand the current research landscape and what the VoxFormer does that is different from the previous works. 
+In this section, I'm going to present three papers that I think are the most relevant. This will help you to understand the current research landscape and what the VoxFormer does that is different from the previous works. 
 
 ## LMSCNet(LiDAR)
 <div align="center">
@@ -139,14 +139,14 @@ Examining the results presented below, it is evident that the VoxFormer paper su
       </td>
       <td style="width: 40%; border: none; text-align: center; vertical-align: middle;">
         <img src="/images/vox/image48.png" alt="Image 2" width="650">
-        <p style="text-align:center;font-style:italic;">Quantitative comparison against LiDAR-based SSC methods. Top three: red, green and blue</p>
+        <p style="text-align:center;font-style:italic;">Quantitative comparison against LiDAR-based SSC methods. Top three: red, green, and blue</p>
       </td>
     </tr>
   </table>
 </div>
 
 ## Qualitative Result
-Here are the qualitative results of VoxFormer. Upon closer examination of the animation, it becomes evident that when surrounding cars are moving at high speeds, the point cloud's position in the current frame differs significantly from the next frame. Consequently, incorrect projection to the images in future frames leads to some cars appearing distorted
+Here are the qualitative results of VoxFormer. Upon closer examination of the animation, it becomes evident that when surrounding cars are moving at high speeds, the point cloud's position in the current frame differs significantly from the next frame. Consequently, incorrect projection to the image spaces in future frames leads to some cars appearing distorted.
 <div align="center">
   <img img src="/gif/VF2.gif" alt="Demo Video" width="1050">
   <p style="text-align:center;font-style:italic;">VoxFormer in action​.</p>
@@ -158,7 +158,7 @@ Here are the qualitative results of VoxFormer. Upon closer examination of the an
   <img img src="/images/vox/image54.png" alt="Demo Video" width="1050">
   <p style="text-align:center;font-style:italic;">Qualitative comparison against MonoScene and LMSCNet​.</p>
 </div>
-Finally, the qualitative comparison show us the superior performance of VoxFormer. In the first example, only VoxFormer is able to correctly complete the shape of the car on the bottom right, whereas monoscene can detect the car but failed to create a comprehensive shape and LMSCNet doesn't detect it at all. In the second example, VoxFormer is the only model correctly segmented the pole while the others failed to do so.
+Finally, the qualitative comparison show us the superior performance of VoxFormer. In the first example, only VoxFormer is able to correctly complete the shape of the car on the bottom right, whereas monoscene can detect the car but failed to create a comprehensive shape and LMSCNet doesn't detect it at all. In the second example, VoxFormer is the only model that correctly segmented the pole while the others failed to do so.
 
 ## Ablation Study
 Next, we will explore the ablation study conducted by the authors to validate the effectiveness of their proposed method. Let's begin with the impact of accurate depth estimation on the model's performance. The results demonstrate the significant difference between depth estimation obtained through a stereo setup (more accurate) and monocular estimation, reflected in a 6-8% improvement in IoU and 2-3% in mIoU.
