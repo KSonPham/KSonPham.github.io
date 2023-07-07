@@ -167,7 +167,7 @@ Next, we will explore the ablation study conducted by the authors to validate th
   <p style="text-align:center;font-style:italic;">Ablation study for depth estimation.</p>
 </div>
 
-Moving on, we examine the trade-off of using multiple temporal inputs. While there is no major improvement in IoU performance, incorporating future frames allows objects that are farther in the current frame to appear closer, resulting in a more detailed feature map for queries to attend to, thus boosting mIoU performance. However, this enhancement comes at the expense of increased computational cost, with VRAM usage rising from 15.21 GB to 19.37 GB.
+Moving on, we examine the trade-off of using multiple temporal inputs. While there is no major improvement in IoU performance since there is no change in the query proposal process, incorporating future frames allows objects that are farther in the current frame to appear closer, resulting in a more detailed feature map for queries to attend to, thus boosting mIoU performance. However, this enhancement comes at the expense of increased computational cost, with VRAM usage rising from 15.21 GB to 19.37 GB.
 <div align="center">
   <img img src="/images/vox/image50.png" alt="Overview" width="650">
   <p style="text-align:center;font-style:italic;">Ablation study for temporal input.</p>
