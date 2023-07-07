@@ -126,10 +126,10 @@ Next, the updated queries are combined with mask tokens $$\boldsymbol{m}$$, whic
 
 # Result and Ablation Study
 ## Dataset and Evaluation Metrics
-The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$$m$$ ahead, 6.4$$m$$ in height and 25.6$$m$$ left and right side. Voxel grid has size 0.2$$m$$ x 0.2$$m$$ x 0.2$$m$$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
+The paper is evaluated on the SemanticKITTI(2019) SCC with RGB images taken from KITTI Odometry Benchmark with 22 outdoor driving scenarios. The interested volume is 51.2$$m$$ ahead, 6.4$$m$$ in height, and 25.6$$m$$ left and right side. Voxel grid has size 0.2$$m$$ x 0.2$$m$$ x 0.2$$m$$ with 20 classes (1 unknown class). The evaluation matrices are mIoU and IoU.
 
 ## Quantitative Result
-Examining the results presented below, it is evident that the VoxFormer paper surpasses the current leading camera-based method, MonoScene, by a considerable margin. Notably, as the distance to the egovehicle decreases, the performance gap between VoxFormer and state-of-the-art LiDAR-based SSC methods reduces significantly, to the extent that VoxFormer even outperforms certain methods in this group.
+Examining the results presented below, it is evident that the VoxFormer paper surpasses the current leading camera-based method, MonoScene, by a considerable margin. Notably, as the distance to the ego vehicle decreases, the performance gap between VoxFormer and state-of-the-art LiDAR-based SSC methods reduces significantly, to the extent that VoxFormer even outperforms certain methods in this group.
 <div style="text-align: center; border: none; ">
   <table style="width: 100%; border: none; ">
     <tr>
@@ -146,7 +146,7 @@ Examining the results presented below, it is evident that the VoxFormer paper su
 </div>
 
 ## Qualitative Result
-Here are the qualitative results of VoxFormer. Upon closer examination of the animation, it becomes evident that when surrounding cars are moving at high speeds, the point cloud's position in the current frame differs significantly from the next frame. Consequently, incorrect projection to the image spaces in future frames leads to some cars appearing distorted.
+Here are the qualitative results of VoxFormer. Upon closer examination of the animation, it becomes evident that when surrounding cars are moving at high speeds, the point cloud's position in the current frame differs significantly from the next frame. Consequently, incorrect projection of these points onto the future frames leads to some cars appearing distorted.
 <div align="center">
   <img img src="/gif/VF2.gif" alt="Demo Video" width="1050">
   <p style="text-align:center;font-style:italic;">VoxFormer in action​.</p>
@@ -158,7 +158,7 @@ Here are the qualitative results of VoxFormer. Upon closer examination of the an
   <img img src="/images/vox/image54.png" alt="Demo Video" width="1050">
   <p style="text-align:center;font-style:italic;">Qualitative comparison against MonoScene and LMSCNet​.</p>
 </div>
-Finally, the qualitative comparison show us the superior performance of VoxFormer. In the first example, only VoxFormer is able to correctly complete the shape of the car on the bottom right, whereas monoscene can detect the car but failed to create a comprehensive shape and LMSCNet doesn't detect it at all. In the second example, VoxFormer is the only model that correctly segmented the pole while the others failed to do so.
+Finally, the qualitative comparison shows us the superior performance of VoxFormer. In the first example, only VoxFormer is able to correctly complete the shape of the car on the bottom right, whereas MonoScene can detect the car but failed to create a comprehensive shape and LMSCNet doesn't detect it at all. In the second example, VoxFormer is the only model that correctly segmented the pole while the others failed to do so.
 
 ## Ablation Study
 Next, we will explore the ablation study conducted by the authors to validate the effectiveness of their proposed method. Let's begin with the impact of accurate depth estimation on the model's performance. The results demonstrate the significant difference between depth estimation obtained through a stereo setup (more accurate) and monocular estimation, reflected in a 6-8% improvement in IoU and 2-3% in mIoU.
@@ -167,13 +167,13 @@ Next, we will explore the ablation study conducted by the authors to validate th
   <p style="text-align:center;font-style:italic;">Ablation study for depth estimation.</p>
 </div>
 
-Moving on, we examine the trade-off of using multiple temporal inputs. While there is no major improvement in IoU performance, incorporating future frames allows objects that are farther in the current frame to appear closer, resulting in a more detailed feature map for queries to attend to, thus boosting mIoU performance. However, this enhancement comes at the expense of increased computational cost, with VRAM usage rising from 15.21GB to 19.37GB.
+Moving on, we examine the trade-off of using multiple temporal inputs. While there is no major improvement in IoU performance, incorporating future frames allows objects that are farther in the current frame to appear closer, resulting in a more detailed feature map for queries to attend to, thus boosting mIoU performance. However, this enhancement comes at the expense of increased computational cost, with VRAM usage rising from 15.21 GB to 19.37 GB.
 <div align="center">
   <img img src="/images/vox/image50.png" alt="Overview" width="650">
   <p style="text-align:center;font-style:italic;">Ablation study for temporal input.</p>
 </div>
 
-Lastly, the table below highlights the remarkable benefits of the selected query proposal method. It not only outperforms dense query proposals by approximately 10% in IoU, but also reduces GPU memory consumption by 4GB.
+Lastly, the table below highlights the remarkable benefits of the selected query proposal method. It not only outperforms dense query proposals by approximately 10% in IoU but also reduces GPU memory consumption by 4GB.
 <div align="center">
   <img img src="/images/vox/image51.png" alt="Overview" width="650">
   <p style="text-align:center;font-style:italic;">Ablation study for query proposal.</p>
