@@ -173,7 +173,7 @@ Moving on, we examine the trade-off of using multiple temporal inputs. While the
   <p style="text-align:center;font-style:italic;">Ablation study for temporal input.</p>
 </div>
 
-Lastly, the table below highlights the remarkable benefits of the selected query proposal method. It not only outperforms dense query proposals by approximately 10% in IoU but also reduces GPU memory consumption by 4GB.
+Lastly, the table below highlights the remarkable benefits of the selected query proposal method. It not only outperforms dense query proposals by approximately 10% in IoU but also reduces GPU memory consumption by 4 GB.
 <div align="center">
   <img img src="/images/vox/image51.png" alt="Overview" width="650">
   <p style="text-align:center;font-style:italic;">Ablation study for query proposal.</p>
